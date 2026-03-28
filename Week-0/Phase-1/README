@@ -1,0 +1,25 @@
+# Phase 1 – SQL to PySpark
+
+## 📘 What I Learned
+- Basic DataFrame operations:
+  - `show()`
+  - `select()`
+  - `filter()`
+- Aggregations using `groupBy()`
+- Writing equivalent SQL and PySpark queries
+- Understanding a DataFrame as a table-like structure
+
+## 🛠️ What I Practiced
+- Displaying all records from a DataFrame
+- Filtering data based on conditions (e.g., city, age)
+- Selecting specific columns
+- Counting records using `groupBy()`
+
+## ⚠️ Challenges Faced
+- Understanding how `groupBy()` works compared to SQL
+- Remembering PySpark syntax vs SQL syntax
+- Getting comfortable with DataFrame operations
+
+## 🎯 Outcome
+- Able to convert simple SQL queries into PySpark
+- Built confidence with basic DataFrame transformations
