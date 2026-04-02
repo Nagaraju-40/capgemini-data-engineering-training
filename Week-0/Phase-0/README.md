@@ -9,7 +9,7 @@ I have successfully finished all four modules in the "Data Engineer Learning Pat
 
 ## Modules Covered
 
-### 1. Data Ingestion with Lakeflow Connect
+### 1. Data Ingestion with lakeflow Connect
 	- Learned how to collect and ingest data from various sources
 	- Gained knowledge of different connectors and ingestion methods
 	- Gained knowledge of different connectors and ingestion methods
