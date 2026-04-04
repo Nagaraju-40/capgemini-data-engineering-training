@@ -1,0 +1,173 @@
+# 🔄 PySpark ETL Pipeline: Customers & Sales Analysis
+
+## 🎯 Objective
+
+Move from writing isolated queries to thinking like a data engineer. This phase focuses on data ingestion,
+cleaning, transformation, and pipeline building using Spark Playground sample datasets
+---
+
+## 📌 Problem Statement
+
+Raw sales and customer datasets often contain:
+
+* Missing or inconsistent values
+* Invalid records (e.g., negative quantity or amount)
+* Lack of structured insights
+
+The objective is to **clean, transform, and analyze the data** to derive:
+
+* Daily sales trends
+* Customer behavior
+* Revenue insights
+
+---
+
+## 🧠 Approach
+
+### 🔹 1. Extract
+
+* Loaded data from CSV files:
+
+  * `customers.csv`
+  * `sales.csv`
+
+---
+
+### 🔹 2. Inspect
+
+* Used:
+
+  * `.show()` → preview data
+  * `.printSchema()` → understand structure
+
+---
+
+### 🔹 3. Transform (Data Cleaning)
+
+* Converted columns to correct data types
+* Removed null values in key columns
+* Filtered invalid records (negative quantity/amount)
+
+---
+
+### 🔹 4. Join
+
+* Joined `sales` and `customers` using `customer_id`
+
+---
+
+### 🔹 5. Business Logic Implementation
+
+Performed multiple analytical transformations:
+
+* 📅 **Daily Sales** → total revenue per day
+* 🏙️ **City-wise Revenue** → revenue distribution by city
+* 🔁 **Repeat Customers** → customers with more than 2 orders
+* 🥇 **Top Customers per City** → highest spender in each city
+* 📊 **Final Report** → customer-level summary
+
+---
+
+### 🔹 6. Load
+
+* Stored final results in **Parquet format** for efficient storage and querying
+
+---
+
+
+### 🔸 Data Cleaning
+
+```python id="9u6r7c"
+dropna()
+filter(col("quantity") > 0)
+```
+
+---
+
+### 🔸 Aggregations
+
+```python id="g4x9vl"
+groupBy().agg(sum(), count())
+```
+
+---
+
+### 🔸 Window Function (Ranking)
+
+```python id="bx2m1p"
+row_number().over(Window.partitionBy("city").orderBy(desc("total_spent")))
+```
+
+---
+
+## ⚠️ Challenges Faced
+
+### 🔹 Data Quality Issues
+
+Handling missing and invalid values without losing important data.
+
+---
+
+### 🔹 Schema Mismatch
+
+Ensuring correct data types for calculations and joins.
+
+---
+
+### 🔹 Join Accuracy
+
+Ensuring proper joins using `customer_id` to avoid incorrect results.
+
+---
+
+### 🔹 Implementing Business Logic
+
+Designing meaningful transformations like repeat customers and top spenders.
+
+---
+
+## 📚 Learnings
+
+* Built a complete **ETL pipeline (Extract → Transform → Load)**
+* Gained hands-on experience with:
+
+  * PySpark DataFrames
+  * Aggregations and joins
+  * Window functions
+* Understood importance of:
+
+  * Data validation
+  * Data cleaning
+  * Efficient storage formats (Parquet)
+
+---
+
+## 📈 Output
+
+### 🔹 Daily Sales
+
+* Total revenue generated per day
+
+### 🔹 City-wise Revenue
+
+* Revenue distribution across cities
+
+### 🔹 Repeat Customers
+
+* Customers with more than 2 orders
+
+### 🔹 Top Customers per City
+
+* Highest spender in each city
+
+
+---
+
+
+## ⚙️ Technologies Used
+
+* 🐍 Python
+* ⚡ PySpark
+* 📦 Parquet Storage
+
+---
